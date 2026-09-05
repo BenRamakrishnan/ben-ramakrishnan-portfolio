@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Manrope, JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { PerspectiveProvider } from "@/components/ui/SystemsPerspectiveToggle";
 
 const anton = Anton({
   weight: "400",
@@ -60,9 +59,7 @@ export default function RootLayout({
       className={`dark ${anton.variable} ${manrope.variable} ${jetbrainsMono.variable} ${inter.variable}`}
     >
       <body className="font-sans bg-[#080808] text-[#f4f4f1] antialiased selection:bg-white selection:text-black min-h-screen flex flex-col relative overflow-x-hidden">
-        <PerspectiveProvider>
-          <main className="flex-1 relative z-10 w-full">{children}</main>
-        </PerspectiveProvider>
+        <main className="flex-1 relative z-10 w-full">{children}</main>
       </body>
     </html>
   );

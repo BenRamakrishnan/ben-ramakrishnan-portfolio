@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ChevronLeft, 
@@ -10,18 +9,10 @@ import {
   ArrowUpRight, 
   Mail, 
   Camera, 
-  FileText, 
-  CheckCircle2, 
   Cpu, 
-  Layers, 
   Zap, 
   X,
-  ExternalLink,
-  Sparkles,
-  TrendingUp,
-  Sliders,
-  Compass,
-  Code2
+  Compass
 } from "lucide-react";
 import { RouteVisualizer } from "./RouteVisualizer";
 import { MarketAnalyzerWidget } from "./MarketAnalyzerWidget";
