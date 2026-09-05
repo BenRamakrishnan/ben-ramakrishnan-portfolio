@@ -326,11 +326,11 @@ export function ChristophStage() {
           BR
         </button>
 
-        {/* Center: Floating Frosted Pill Nav (Dynamic & Horizontally Scrollable on All Screen Sizes) */}
+        {/* Center: Floating Frosted Pill Nav (Wide & Scroll-Free on PC, Scrollable on Mobile) */}
         <nav 
           ref={navScrollRef}
           aria-label="Main Navigation" 
-          className="site-nav pointer-events-auto flex-1 min-w-0 mx-auto max-w-[44rem]"
+          className="site-nav pointer-events-auto flex-1 min-w-0 lg:flex-initial lg:w-auto lg:max-w-none mx-auto"
         >
           {SECTIONS.slice(1).map((sec, i) => {
             const sectionIdx = i + 1;

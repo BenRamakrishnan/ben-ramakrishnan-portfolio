@@ -104,34 +104,65 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Floating Frosted Capsule Nav - Dynamic & Horizontally Scrollable on All Screen Sizes */
+/* Floating Frosted Capsule Nav - Wide & Scrollbar-Free on PC, Scrollable with Scrollbar on Mobile */
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(0.25rem, 0.8vw, 0.75rem);
-  padding: 0.26rem 0.38rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 999px;
-  background: rgba(8, 8, 8, 0.55);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(20px) saturate(130%);
-  -webkit-backdrop-filter: blur(20px) saturate(130%);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  background: rgba(8, 8, 8, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  white-space: nowrap;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
 }
 
-.site-nav::-webkit-scrollbar {
-  display: none;
-}
-
-@media (min-width: 1200px) {
+/* Mobile & Phone screens (< 1024px): scrollable with visible thin scrollbar as requested */
+@media (max-width: 1023px) {
   .site-nav {
-    padding: 0.35rem 0.65rem;
-    gap: clamp(0.5rem, 1.2vw, 1.25rem);
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+    padding: 0.28rem 0.4rem;
+    gap: clamp(0.25rem, 0.8vw, 0.65rem);
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+  }
+
+  .site-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    margin-inline: 0.75rem;
+  }
+
+  .site-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+  }
+
+  .site-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* PC & Laptop screens (>= 1024px): wide, fully fits all 6 items, NO scrollbar needed */
+@media (min-width: 1024px) {
+  .site-nav {
+    overflow: visible;
+    scrollbar-width: none;
+    width: auto;
+    max-width: none;
+    padding: 0.35rem 0.85rem;
+    gap: clamp(0.6rem, 1.2vw, 1.35rem);
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
   }
 }
 
