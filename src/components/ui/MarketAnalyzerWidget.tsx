@@ -52,27 +52,27 @@ export function MarketAnalyzerWidget() {
   const [activeSector, setActiveSector] = useState(SECTORS[0]);
 
   return (
-    <div className="w-full bg-[#060709] border border-white/10 p-5 overflow-hidden flex flex-col gap-4 text-xs font-mono select-none">
+    <div className="w-full bg-[#060709] border border-white/10 p-3.5 sm:p-5 overflow-hidden flex flex-col gap-3 sm:gap-4 text-xs font-mono select-none rounded-xl">
       {/* HUD Header */}
-      <div className="flex items-center justify-between border-b border-white/10 pb-3">
+      <div className="flex items-center justify-between border-b border-white/10 pb-2.5 sm:pb-3">
         <div className="flex items-center gap-2">
           <TrendingUp className="h-3.5 w-3.5 text-white" />
-          <span className="text-white font-semibold tracking-widest uppercase text-[10px]">
+          <span className="text-white font-semibold tracking-widest uppercase text-[9px] sm:text-[10px]">
             MARKET ARBITRAGE SCANNER
           </span>
         </div>
-        <span className="text-[9px] text-zinc-500 flex items-center gap-1 font-mono uppercase tracking-wider">
+        <span className="text-[8px] sm:text-[9px] text-zinc-500 flex items-center gap-1 font-mono uppercase tracking-wider">
           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span> PIPELINE ACTIVE
         </span>
       </div>
 
       {/* Sector Switcher Tabs */}
-      <div className="flex gap-1.5 p-1 bg-black/60 border border-white/10 overflow-x-auto">
+      <div className="flex gap-1 p-1 bg-black/60 border border-white/10 overflow-x-auto">
         {SECTORS.map((sector) => (
           <button
             key={sector.id}
             onClick={() => setActiveSector(sector)}
-            className={`px-3 py-1.5 text-[10px] uppercase font-mono tracking-wider whitespace-nowrap transition-all flex-1 text-center cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 text-[9px] sm:text-[10px] uppercase font-mono tracking-wider whitespace-nowrap transition-all flex-1 text-center cursor-pointer ${
               activeSector.id === sector.id
                 ? "bg-white text-black font-bold"
                 : "text-zinc-400 hover:text-white"
@@ -92,36 +92,36 @@ export function MarketAnalyzerWidget() {
         className="space-y-3"
       >
         {/* Metric Cards */}
-        <div className="grid grid-cols-3 gap-2">
-          <div className="bg-white/5 border border-white/10 p-2.5">
-            <span className="text-[9px] text-zinc-500 uppercase tracking-wider">GAP RATING</span>
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+          <div className="bg-white/5 border border-white/10 p-2 sm:p-2.5">
+            <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-wider">GAP RATING</span>
             <div className="flex items-baseline gap-1 mt-0.5">
-              <span className="text-base font-bold text-white font-sans">{activeSector.gapScore}</span>
-              <span className="text-[9px] text-zinc-500">/ 10</span>
+              <span className="text-sm sm:text-base font-bold text-white font-sans">{activeSector.gapScore}</span>
+              <span className="text-[8px] sm:text-[9px] text-zinc-500">/ 10</span>
             </div>
-            <span className="text-[9px] text-zinc-300 font-sans mt-0.5 block font-medium">Profit Pool High</span>
+            <span className="text-[8px] sm:text-[9px] text-zinc-300 font-sans mt-0.5 block font-medium">High Profit Pool</span>
           </div>
 
-          <div className="bg-white/5 border border-white/10 p-2.5">
-            <span className="text-[9px] text-zinc-500 uppercase tracking-wider">DEMAND TRAJECTORY</span>
-            <div className="text-base font-bold text-white font-sans mt-0.5">{activeSector.searchVolume}</div>
-            <span className="text-[9px] text-zinc-300 font-sans mt-0.5 block flex items-center gap-0.5">
+          <div className="bg-white/5 border border-white/10 p-2 sm:p-2.5">
+            <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-wider">DEMAND TRAJECTORY</span>
+            <div className="text-sm sm:text-base font-bold text-white font-sans mt-0.5">{activeSector.searchVolume}</div>
+            <span className="text-[8px] sm:text-[9px] text-zinc-300 font-sans mt-0.5 block truncate">
               Unmet: {activeSector.unmetDemand}
             </span>
           </div>
 
-          <div className="bg-white/5 border border-white/10 p-2.5">
-            <span className="text-[9px] text-zinc-500 uppercase tracking-wider">LANDSCAPE</span>
-            <div className="text-sm font-semibold text-white font-sans mt-0.5 line-clamp-1">
+          <div className="bg-white/5 border border-white/10 p-2 sm:p-2.5">
+            <span className="text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-wider">LANDSCAPE</span>
+            <div className="text-xs sm:text-sm font-semibold text-white font-sans mt-0.5 truncate">
               {activeSector.competitors}
             </div>
-            <span className="text-[9px] text-zinc-400 font-sans mt-0.5 block">Niche Void</span>
+            <span className="text-[8px] sm:text-[9px] text-zinc-400 font-sans mt-0.5 block">Niche Void</span>
           </div>
         </div>
 
         {/* Extracted Friction Signals */}
-        <div className="bg-black/60 border border-white/10 p-3.5 space-y-2">
-          <div className="flex items-center justify-between text-[10px] text-zinc-400 border-b border-white/10 pb-2">
+        <div className="bg-black/60 border border-white/10 p-3 sm:p-3.5 space-y-2">
+          <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-zinc-400 border-b border-white/10 pb-2">
             <span className="flex items-center gap-1.5 text-white uppercase tracking-wider font-mono text-[9px]">
               <AlertCircle className="h-3 w-3 text-white" />
               IDENTIFIED FRICTION SIGNALS ({activeSector.keyPainPoints.length})

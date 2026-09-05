@@ -259,7 +259,7 @@ export function ChristophStage() {
 
   return (
     <div 
-      className="relative w-screen h-screen overflow-hidden select-none bg-[#080808] text-[#f4f4f1]"
+      className="relative w-full h-[100dvh] min-h-[100dvh] overflow-hidden select-none bg-[#080808] text-[#f4f4f1]"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -315,7 +315,7 @@ export function ChristophStage() {
         <button
           onClick={() => goToSection(0)}
           aria-label="Return to Start"
-          className="pointer-events-auto w-[2.65rem] h-[2.65rem] rounded-full border border-white/15 bg-[#080808]/30 backdrop-blur-xl flex items-center justify-center text-white text-[0.72rem] font-bold tracking-[0.14em] hover:scale-105 hover:border-white/40 transition-all cursor-pointer shadow-lg"
+          className="pointer-events-auto w-[2.65rem] h-[2.65rem] rounded-full border border-white/18 bg-[#080808]/40 backdrop-blur-xl flex items-center justify-center text-white text-[0.72rem] font-bold tracking-[0.14em] hover:scale-105 active:scale-95 hover:border-white/45 transition-all cursor-pointer shadow-lg"
         >
           BR
         </button>
@@ -367,7 +367,7 @@ export function ChristophStage() {
         <div className="flex items-center gap-2 pointer-events-auto">
           <button
             onClick={() => setContactOpen(true)}
-            className="hidden sm:inline-flex items-center justify-center min-h-[2.65rem] px-[1.15rem] border border-white/18 rounded-full bg-[#080808]/30 backdrop-blur-xl text-white/90 text-[0.74rem] font-semibold tracking-wider hover:border-white/45 hover:text-white transition-all cursor-pointer shadow-lg"
+            className="hidden sm:inline-flex items-center justify-center min-h-[2.65rem] px-[1.15rem] border border-white/18 rounded-full bg-[#080808]/40 backdrop-blur-xl text-white/90 text-[0.74rem] font-semibold tracking-wider hover:border-white/45 hover:text-white active:scale-95 transition-all cursor-pointer shadow-lg"
           >
             Contact
           </button>
@@ -376,7 +376,7 @@ export function ChristophStage() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
-            className="xl:hidden w-[2.65rem] h-[2.65rem] rounded-full border border-white/20 bg-[#080808]/40 backdrop-blur-xl flex flex-col items-center justify-center gap-1 cursor-pointer text-white"
+            className="xl:hidden w-[2.65rem] h-[2.65rem] rounded-full border border-white/20 bg-[#080808]/50 backdrop-blur-xl flex flex-col items-center justify-center gap-1 cursor-pointer text-white active:scale-95 transition-transform"
           >
             <span className={`w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-[3px]" : ""}`} />
             <span className={`w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-[2.5px]" : ""}`} />
@@ -391,63 +391,76 @@ export function ChristophStage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-35 bg-[#080808]/95 backdrop-blur-3xl flex flex-col justify-between p-8 pt-24"
+            className="fixed inset-0 z-35 bg-[#080808]/96 backdrop-blur-3xl flex flex-col justify-between p-6 sm:p-8 pt-20 sm:pt-24 max-h-[100dvh] overflow-y-auto"
           >
-            <div className="flex flex-col gap-4 text-base sm:text-lg tracking-tight">
+            <div className="flex flex-col gap-3 sm:gap-4 text-base sm:text-lg tracking-tight">
               <button
                 onClick={() => goToSection(0)}
-                className="text-left text-zinc-400 hover:text-white font-display py-2 border-b border-white/10"
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 0 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 00 // INTRO
               </button>
               <button
                 onClick={() => goToSection(1)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 1 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 1 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 01 // AI & SYSTEMS ARCHITECTURE
               </button>
               <button
                 onClick={() => goToSection(2)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 2 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 2 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 02 // LOGISTICS & QUANTITATIVE FINANCE
               </button>
               <button
                 onClick={() => goToSection(3)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 3 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 3 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 03 // VENTURE ARCHITECTURE & IDEATION
               </button>
               <button
                 onClick={() => goToSection(4)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 4 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 4 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 04 // ATHLETIC PERFORMANCE & BADMINTON
               </button>
               <button
                 onClick={() => goToSection(5)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 5 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 5 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 05 // CREATIVE DIRECTION & PHOTOGRAPHY
               </button>
               <button
                 onClick={() => goToSection(6)}
-                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 6 ? "text-white font-bold" : "text-zinc-400"}`}
+                className={`text-left font-display py-2 border-b border-white/10 ${activeSection === 6 ? "text-white font-bold" : "text-zinc-400 hover:text-white"}`}
               >
                 06 // THE PERSON BEHIND IT
               </button>
             </div>
 
-            <div className="space-y-4 pt-6">
+            <div className="space-y-3.5 pt-4 border-t border-white/10">
               <button
                 onClick={() => { setMobileMenuOpen(false); setContactOpen(true); }}
-                className="w-full py-3 border border-white/20 rounded-full bg-white text-black font-bold text-sm tracking-wider uppercase"
+                className="w-full py-3.5 border border-white/20 rounded-full bg-white text-black font-bold text-xs tracking-wider uppercase active:scale-[0.98] transition-transform cursor-pointer"
               >
-                Initiate Contact
+                Initiate Contact &rarr;
               </button>
-              <div className="flex justify-between text-xs text-zinc-500 font-mono">
-                <span>BENGALURU, IN</span>
-                <span>SYSTEMS, ATHLETICS & VENTURES</span>
+              <div className="flex items-center justify-between text-[11px] text-zinc-400 font-mono pt-1">
+                <button
+                  onClick={() => { setMobileMenuOpen(false); setImprintOpen(true); }}
+                  className="hover:text-white underline-offset-2 hover:underline cursor-pointer"
+                >
+                  Imprint
+                </button>
+                <span aria-hidden="true">·</span>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); setPhotoInfoOpen(true); }}
+                  className="hover:text-white underline-offset-2 hover:underline cursor-pointer"
+                >
+                  Photo System
+                </button>
+                <span aria-hidden="true">·</span>
+                <span className="text-white/70">Bengaluru, IN</span>
               </div>
             </div>
           </motion.div>
@@ -459,21 +472,21 @@ export function ChristophStage() {
 
         {/* PANEL 0: INTRO / HERO */}
         <div
-          className={`absolute inset-0 flex flex-col justify-end items-center text-center pb-[clamp(4.5rem,8.5vh,6.5rem)] px-4 transition-opacity duration-700 ${
+          className={`absolute inset-0 flex flex-col justify-end items-center text-center pb-[clamp(4.85rem,9.5vh,6.85rem)] px-3 sm:px-6 transition-opacity duration-700 ${
             activeSection === 0 ? "opacity-100 pointer-events-auto visible" : "opacity-0 pointer-events-none invisible"
           }`}
         >
-          <div className="w-full max-w-[94vw] flex flex-col items-center">
+          <div className="w-full max-w-[96vw] sm:max-w-[90vw] flex flex-col items-center">
             
             {/* Subline above hero word */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: activeSection === 0 ? 1 : 0, y: activeSection === 0 ? 0 : 15 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="intro-subline mb-3 sm:mb-5"
+              className="intro-subline mb-2.5 sm:mb-4"
             >
               <strong>BEN RAMAKRISHNAN</strong>
-              <span className="text-zinc-300 max-w-xl text-center px-4">
+              <span className="text-zinc-300 max-w-lg text-center px-2 sm:px-4 text-xs sm:text-sm font-light">
                 AI systems architect, logistics strategist, founder & badminton athlete from Bengaluru
               </span>
             </motion.div>
@@ -498,25 +511,24 @@ export function ChristophStage() {
               </h2>
             </div>
 
-            {/* Disciplines Indicator Pills with generous breathing space */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-5 text-[10px] sm:text-[11px] font-mono tracking-wider text-zinc-500 uppercase">
+            {/* Disciplines Indicator Pills with dynamic responsive styling */}
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mt-3 sm:mt-5 text-[10px] sm:text-[11px] font-mono tracking-wider text-zinc-400 uppercase">
               {HERO_WORDS.map((item, wIdx) => (
                 <button
                   key={item.word}
                   onClick={() => {
                     setHeroWordIndex(wIdx);
-                    // Single tap switches active word, double tap navigates
                   }}
                   onDoubleClick={() => goToSection(item.sectionIdx)}
-                  className={`px-3 py-1 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`min-h-[32px] sm:min-h-[36px] px-2.5 sm:px-3.5 py-1 rounded-full border transition-all cursor-pointer flex items-center gap-1.5 active:scale-95 ${
                     heroWordIndex === wIdx 
-                      ? "text-white font-bold bg-white/10 border-white/30 shadow-md" 
-                      : "border-white/10 hover:border-white/20 hover:text-zinc-300 bg-black/20"
+                      ? "text-white font-bold bg-white/12 border-white/35 shadow-md" 
+                      : "border-white/10 hover:border-white/20 hover:text-zinc-300 bg-black/30"
                   }`}
                 >
                   <span className={`w-1.5 h-1.5 rounded-full ${heroWordIndex === wIdx ? "bg-white" : "bg-zinc-600"}`} />
                   <span>{item.word}</span>
-                  <span className="hidden md:inline text-[9px] text-zinc-400 font-sans tracking-normal opacity-80 pl-1 border-l border-white/10">
+                  <span className="hidden lg:inline text-[9px] text-zinc-400 font-sans tracking-normal opacity-80 pl-1 border-l border-white/10">
                     {item.label}
                   </span>
                 </button>
@@ -528,20 +540,20 @@ export function ChristophStage() {
 
         {/* PANEL 1: AI & SYSTEMS ARCHITECTURE */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 1 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>01</span> AI Systems & Vibe Coding
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Autonomous AI Systems & Rapid Prototyping
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 Software velocity has entered an inflection point: high-leverage AI tooling, prompt synthesis, and &ldquo;vibe coding&rdquo; methodologies allow rapid ideation from zero to working prototype within hours rather than quarters.
               </p>
@@ -551,25 +563,25 @@ export function ChristophStage() {
             </div>
 
             {/* AI Architecture Telemetry Benchmark Pill */}
-            <div className="p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md space-y-3 font-mono text-xs">
+            <div className="p-3.5 sm:p-4 rounded-xl border border-white/10 bg-black/50 backdrop-blur-md space-y-2.5 sm:space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span className="flex items-center gap-2 text-white font-semibold">
+                <span className="flex items-center gap-2 text-white font-semibold text-[11px] sm:text-xs">
                   <Cpu className="w-3.5 h-3.5 text-zinc-400" />
                   AI & FULL-STACK ENGINE SPEC
                 </span>
-                <span className="text-emerald-400 text-[10px]">PIPELINE: ACTIVE</span>
+                <span className="text-emerald-400 text-[9px] sm:text-[10px]">PIPELINE: ACTIVE</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[11px] text-zinc-400">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[10px] sm:text-[11px] text-zinc-400">
                 <div>PARADIGM: <span className="text-white">AI-ASSISTED</span></div>
                 <div>FRAMEWORK: <span className="text-white">NEXT.JS 16</span></div>
-                <div>LATENCY: <span className="text-white">P99 &lt; 28MS</span></div>
+                <div className="col-span-2 sm:col-span-1">LATENCY: <span className="text-white">P99 &lt; 28MS</span></div>
               </div>
             </div>
 
             <div className="pt-2">
               <button
                 onClick={() => goToSection(2)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase"
+                className="min-h-[38px] inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase active:scale-95"
               >
                 Proceed to 02 // Logistics & Finance &rarr;
               </button>
@@ -579,20 +591,20 @@ export function ChristophStage() {
 
         {/* PANEL 2: LOGISTICS & QUANTITATIVE FINANCE */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 2 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>02</span> Logistics & Quantitative Finance
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Supply Chain Economics & Financial Modeling
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 Holding a formal B.Com specializing in Logistics, Supply Chain Management, and Financial Accounting, I analyze enterprise operations through the dual lens of physical graph networks and working capital mechanics.
               </p>
@@ -609,7 +621,7 @@ export function ChristophStage() {
             <div className="pt-2">
               <button
                 onClick={() => goToSection(3)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase"
+                className="min-h-[38px] inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase active:scale-95"
               >
                 Proceed to 03 // Venture Ideation &rarr;
               </button>
@@ -619,20 +631,20 @@ export function ChristophStage() {
 
         {/* PANEL 3: VENTURE ARCHITECTURE & IDEATION */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 3 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>03</span> Venture Architecture & Ideation
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Zero-to-One Product Ideation & Market Gap Discovery
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 One of my primary core strengths is personal idea generation and identifying structural market asymmetries. Great founders don&apos;t build features; they locate broken unit economics and engineer compounding digital leverage.
               </p>
@@ -649,7 +661,7 @@ export function ChristophStage() {
             <div className="pt-2">
               <button
                 onClick={() => goToSection(4)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase"
+                className="min-h-[38px] inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase active:scale-95"
               >
                 Proceed to 04 // Athletics &rarr;
               </button>
@@ -659,20 +671,20 @@ export function ChristophStage() {
 
         {/* PANEL 4: ATHLETIC PERFORMANCE & BADMINTON */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 4 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>04</span> Athletic Performance & Badminton
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Kinetic Precision, Reflexes & Court Discipline
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 Badminton is the fastest racquet sport on earth—governed by steep trajectories, smash velocities exceeding 400 km/h, and split-second cognitive decisions executed under intense cardiovascular load.
               </p>
@@ -682,25 +694,25 @@ export function ChristophStage() {
             </div>
 
             {/* Kinetic Performance & Reaction Telemetry HUD */}
-            <div className="p-4 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md space-y-3 font-mono text-xs">
+            <div className="p-3.5 sm:p-4 rounded-xl border border-white/10 bg-black/50 backdrop-blur-md space-y-2.5 sm:space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between border-b border-white/10 pb-2">
-                <span className="flex items-center gap-2 text-white font-semibold">
+                <span className="flex items-center gap-2 text-white font-semibold text-[11px] sm:text-xs">
                   <Zap className="w-3.5 h-3.5 text-zinc-400" />
                   ATHLETIC PERFORMANCE TELEMETRY
                 </span>
-                <span className="text-amber-400 text-[10px]">SMASH VECTOR: 390+ KM/H</span>
+                <span className="text-amber-400 text-[9px] sm:text-[10px]">SMASH VECTOR: 390+ KM/H</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-[11px] text-zinc-400">
-                <div>REACTION LATENCY: <span className="text-white">&lt; 160MS</span></div>
-                <div>AEROBIC THRESHOLD: <span className="text-white">HIGH VO2 MAX</span></div>
-                <div>MOVEMENT PROFILE: <span className="text-white">EXPLOSIVE LUNGE</span></div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[10px] sm:text-[11px] text-zinc-400">
+                <div>REACTION: <span className="text-white">&lt; 160MS</span></div>
+                <div>AEROBIC: <span className="text-white">HIGH VO2 MAX</span></div>
+                <div className="col-span-2 sm:col-span-1">MOVEMENT: <span className="text-white">EXPLOSIVE LUNGE</span></div>
               </div>
             </div>
 
             <div className="pt-2">
               <button
                 onClick={() => goToSection(5)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase"
+                className="min-h-[38px] inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase active:scale-95"
               >
                 Proceed to 05 // Photography &rarr;
               </button>
@@ -710,20 +722,20 @@ export function ChristophStage() {
 
         {/* PANEL 5: CREATIVE DIRECTION & PHOTOGRAPHY */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 5 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>05</span> Creative Direction & Photography
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Monochrome Storytelling & Visual Nuance
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 Beyond code and balance sheets, I explore fine-art monochrome photography as an essential creative pursuit. Viewing the world through high-contrast chiaroscuro lenses trains an acute sensitivity to light, spatial geometry, and human nuance.
               </p>
@@ -733,23 +745,23 @@ export function ChristophStage() {
             </div>
 
             {/* Photography Aesthetic Principles Grid */}
-            <div className="grid grid-cols-2 gap-3 font-mono text-xs">
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md space-y-1">
-                <span className="text-white font-semibold flex items-center gap-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 font-mono text-xs">
+              <div className="p-3 sm:p-3.5 rounded-xl border border-white/10 bg-black/50 backdrop-blur-md space-y-1">
+                <span className="text-white font-semibold flex items-center gap-1.5 text-[11px] sm:text-xs">
                   <Camera className="w-3.5 h-3.5 text-zinc-400" />
                   CHIAROSCURO LIGHT
                 </span>
-                <p className="text-[11px] text-zinc-400 font-sans">
+                <p className="text-[10px] sm:text-[11px] text-zinc-400 font-sans">
                   Deep shadows and crisp highlights that isolate core narrative form.
                 </p>
               </div>
 
-              <div className="p-3.5 rounded-xl border border-white/10 bg-black/40 backdrop-blur-md space-y-1">
-                <span className="text-white font-semibold flex items-center gap-1.5">
+              <div className="p-3 sm:p-3.5 rounded-xl border border-white/10 bg-black/50 backdrop-blur-md space-y-1">
+                <span className="text-white font-semibold flex items-center gap-1.5 text-[11px] sm:text-xs">
                   <Compass className="w-3.5 h-3.5 text-zinc-400" />
                   SPATIAL GEOMETRY
                 </span>
-                <p className="text-[11px] text-zinc-400 font-sans">
+                <p className="text-[10px] sm:text-[11px] text-zinc-400 font-sans">
                   Architectural lines and street perspectives that command attention.
                 </p>
               </div>
@@ -758,7 +770,7 @@ export function ChristophStage() {
             <div className="pt-2">
               <button
                 onClick={() => goToSection(6)}
-                className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase"
+                className="min-h-[38px] inline-flex items-center gap-2 text-xs font-mono tracking-wider text-white border-b border-white pb-1 hover:border-zinc-400 transition-colors cursor-pointer uppercase active:scale-95"
               >
                 Proceed to 06 // The Person Behind It &rarr;
               </button>
@@ -768,20 +780,20 @@ export function ChristophStage() {
 
         {/* PANEL 6: THE PERSON BEHIND IT */}
         <div
-          className={`absolute inset-0 flex items-center justify-start p-[clamp(5.5rem,10vh,8rem)_clamp(1.5rem,5vw,6.5rem)_clamp(5rem,10vh,7rem)] transition-all duration-700 ${
+          className={`absolute inset-0 flex items-center justify-start pt-[calc(var(--safe-top)+3.75rem)] pb-[calc(var(--safe-bottom)+4.5rem)] px-3.5 sm:px-8 md:px-12 lg:px-20 transition-all duration-700 ${
             activeSection === 6 ? "opacity-100 pointer-events-auto visible translate-x-0" : "opacity-0 pointer-events-none invisible -translate-x-6"
           }`}
         >
-          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-[calc(100dvh-13rem)] overflow-y-auto pr-3 md:pr-6 space-y-6 overscroll-contain">
+          <div className="content-scroll-area relative w-full max-w-[44rem] max-h-full overflow-y-auto pr-2 sm:pr-4 md:pr-6 space-y-4 sm:space-y-6 overscroll-contain bg-[#080808]/80 sm:bg-transparent backdrop-blur-xl sm:backdrop-blur-none border border-white/10 sm:border-transparent p-4 sm:p-0 rounded-2xl sm:rounded-none shadow-2xl sm:shadow-none">
             <p className="section-kicker">
               <span>06</span> The Person Behind It
             </p>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.12]">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-white font-sans leading-[1.14]">
               Curiosity, Pragmatism & Relentless Execution
             </h2>
 
-            <div className="space-y-4 text-sm sm:text-base leading-relaxed text-zinc-300 font-light">
+            <div className="space-y-3 sm:space-y-4 text-xs sm:text-sm md:text-base leading-relaxed text-zinc-300 font-light">
               <p>
                 Based in Bengaluru—India&apos;s dynamic epicenter of technology and entrepreneurship—I operate at the convergence of logistics economics, AI systems, and venture building.
               </p>
@@ -794,10 +806,10 @@ export function ChristophStage() {
             </div>
 
             {/* Contact & Social CTAs */}
-            <div className="pt-3 flex flex-wrap items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3">
               <button
                 onClick={() => setContactOpen(true)}
-                className="px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 transition-colors cursor-pointer shadow-lg"
+                className="min-h-[42px] px-5 py-2.5 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-zinc-200 active:scale-95 transition-all cursor-pointer shadow-lg"
               >
                 Write to Ben &rarr;
               </button>
@@ -805,7 +817,7 @@ export function ChristophStage() {
                 href="https://github.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full border border-white/15 bg-white/5 text-zinc-300 hover:text-white hover:border-white/40 transition-colors"
+                className="min-w-[42px] min-h-[42px] flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-300 hover:text-white hover:border-white/40 active:scale-95 transition-all"
                 aria-label="GitHub Profile"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -816,7 +828,7 @@ export function ChristophStage() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-full border border-white/15 bg-white/5 text-zinc-300 hover:text-white hover:border-white/40 transition-colors"
+                className="min-w-[42px] min-h-[42px] flex items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-300 hover:text-white hover:border-white/40 active:scale-95 transition-all"
                 aria-label="LinkedIn Profile"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -825,7 +837,7 @@ export function ChristophStage() {
               </a>
               <button
                 onClick={() => setPhotoInfoOpen(true)}
-                className="px-3.5 py-2 rounded-full border border-white/15 bg-white/5 text-zinc-400 hover:text-white text-[11px] font-mono flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="min-h-[42px] px-3.5 py-2 rounded-full border border-white/15 bg-white/5 text-zinc-400 hover:text-white active:scale-95 text-[11px] font-mono flex items-center gap-1.5 transition-all cursor-pointer"
               >
                 <Camera className="w-3.5 h-3.5 text-zinc-400" />
                 <span>Photo System</span>
@@ -866,9 +878,9 @@ export function ChristophStage() {
         </button>
       </div>
 
-      {/* 5. FOOTER & LEGAL LINKS (BOTTOM LEFT) */}
+      {/* 5. FOOTER & LEGAL LINKS (BOTTOM LEFT) - Hidden on mobile to avoid collision with navigation controls */}
       <footer 
-        className="fixed z-40 left-[var(--safe-left)] bottom-[var(--safe-bottom)] flex items-center gap-2.5 text-[0.68rem] tracking-wider text-white/50 font-mono"
+        className="fixed z-40 left-[var(--safe-left)] bottom-[var(--safe-bottom)] hidden sm:flex items-center gap-2.5 text-[0.68rem] tracking-wider text-white/50 font-mono"
         aria-label="Site Info & Legal"
       >
         <span className="text-white/80 font-semibold">Bengaluru, IN</span>
@@ -895,12 +907,12 @@ export function ChristophStage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4"
           >
-            <div className="relative w-full max-w-md bg-[#0e0e11] border border-white/15 rounded-2xl p-6 sm:p-8 space-y-6 shadow-2xl text-white">
+            <div className="relative w-full max-w-md max-h-[90dvh] overflow-y-auto bg-[#0e0e11] border border-white/15 rounded-2xl p-5 sm:p-8 space-y-5 sm:space-y-6 shadow-2xl text-white">
               <button
                 onClick={() => setContactOpen(false)}
-                className="absolute top-5 right-5 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -954,12 +966,12 @@ export function ChristophStage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4"
           >
-            <div className="relative w-full max-w-lg bg-[#0e0e11] border border-white/15 rounded-2xl p-6 sm:p-8 space-y-5 shadow-2xl text-white">
+            <div className="relative w-full max-w-lg max-h-[90dvh] overflow-y-auto bg-[#0e0e11] border border-white/15 rounded-2xl p-5 sm:p-8 space-y-4 sm:space-y-5 shadow-2xl text-white">
               <button
                 onClick={() => setPhotoInfoOpen(false)}
-                className="absolute top-5 right-5 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -1014,12 +1026,12 @@ export function ChristophStage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-4"
           >
-            <div className="relative w-full max-w-md bg-[#0e0e11] border border-white/15 rounded-2xl p-6 sm:p-8 space-y-4 shadow-2xl text-white">
+            <div className="relative w-full max-w-md max-h-[90dvh] overflow-y-auto bg-[#0e0e11] border border-white/15 rounded-2xl p-5 sm:p-8 space-y-4 shadow-2xl text-white">
               <button
                 onClick={() => setImprintOpen(false)}
-                className="absolute top-5 right-5 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-white/10 hover:bg-white/20 text-zinc-400 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
