@@ -95,7 +95,7 @@ const SECTIONS: SectionData[] = [
     id: "mensch",
     index: 6,
     kicker: "06 The Person Behind It",
-    shortLabel: "The Person Behind It",
+    shortLabel: "The Person",
     title: "Curiosity, Pragmatism & Relentless Execution",
     image: "/images/about-cinematic.jpg",
     alt: "Ben Ramakrishnan — Founder & Systems Architect from Bengaluru",
@@ -120,6 +120,21 @@ export function ChristophStage() {
 
   const wheelLockRef = useRef(false);
   const touchStartRef = useRef<number | null>(null);
+  const navScrollRef = useRef<HTMLElement>(null);
+  const navButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  // Sync horizontal pill nav scroll with active section
+  useEffect(() => {
+    if (activeSection === 0) {
+      navScrollRef.current?.scrollTo({ left: 0, behavior: "smooth" });
+    } else if (navButtonRefs.current[activeSection]) {
+      navButtonRefs.current[activeSection]?.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  }, [activeSection]);
 
   // Auto-cycle hero words when in section 0
   useEffect(() => {
@@ -309,65 +324,47 @@ export function ChristophStage() {
       </div>
 
       {/* 2. TOPBAR HEADER */}
-      <header className="fixed top-[var(--safe-top)] left-[var(--safe-left)] right-[var(--safe-right)] z-40 flex items-center justify-between pointer-events-none">
+      <header className="fixed top-[var(--safe-top)] left-[var(--safe-left)] right-[var(--safe-right)] z-40 flex items-center justify-between gap-2 sm:gap-4 pointer-events-none">
         
         {/* Left: Monogram Mark (BR) */}
         <button
           onClick={() => goToSection(0)}
           aria-label="Return to Start"
-          className="pointer-events-auto w-[2.65rem] h-[2.65rem] rounded-full border border-white/18 bg-[#080808]/40 backdrop-blur-xl flex items-center justify-center text-white text-[0.72rem] font-bold tracking-[0.14em] hover:scale-105 active:scale-95 hover:border-white/45 transition-all cursor-pointer shadow-lg"
+          className="pointer-events-auto shrink-0 w-[2.45rem] sm:w-[2.65rem] h-[2.45rem] sm:h-[2.65rem] rounded-full border border-white/18 bg-[#080808]/60 backdrop-blur-xl flex items-center justify-center text-white text-[0.72rem] font-bold tracking-[0.14em] hover:scale-105 active:scale-95 hover:border-white/45 transition-all cursor-pointer shadow-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
         >
           BR
         </button>
 
-        {/* Center: Floating Frosted Pill Nav (Desktop) */}
+        {/* Center: Floating Frosted Pill Nav (Dynamic & Horizontally Scrollable on All Screen Sizes) */}
         <nav 
+          ref={navScrollRef}
           aria-label="Main Navigation" 
-          className="site-nav pointer-events-auto hidden xl:flex items-center gap-4 text-[0.76rem]"
+          className="site-nav pointer-events-auto flex-1 min-w-0 mx-auto max-w-[44rem]"
         >
-          <button
-            onClick={() => goToSection(1)}
-            className={activeSection === 1 ? "is-active font-bold text-white" : ""}
-          >
-            AI & Systems
-          </button>
-          <button
-            onClick={() => goToSection(2)}
-            className={activeSection === 2 ? "is-active font-bold text-white" : ""}
-          >
-            Logistics & Finance
-          </button>
-          <button
-            onClick={() => goToSection(3)}
-            className={activeSection === 3 ? "is-active font-bold text-white" : ""}
-          >
-            Venture Ideation
-          </button>
-          <button
-            onClick={() => goToSection(4)}
-            className={activeSection === 4 ? "is-active font-bold text-white" : ""}
-          >
-            Athletics
-          </button>
-          <button
-            onClick={() => goToSection(5)}
-            className={activeSection === 5 ? "is-active font-bold text-white" : ""}
-          >
-            Photography
-          </button>
-          <button
-            onClick={() => goToSection(6)}
-            className={activeSection === 6 ? "is-active font-bold text-white" : ""}
-          >
-            The Person Behind It
-          </button>
+          {SECTIONS.slice(1).map((sec, i) => {
+            const sectionIdx = i + 1;
+            const isActive = activeSection === sectionIdx;
+            return (
+              <button
+                key={sec.id}
+                ref={(el) => {
+                  navButtonRefs.current[sectionIdx] = el;
+                }}
+                onClick={() => goToSection(sectionIdx)}
+                className={`site-nav-item ${isActive ? "is-active" : ""}`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span>{sec.shortLabel}</span>
+              </button>
+            );
+          })}
         </nav>
 
         {/* Right: Contact Button & Mobile Toggle */}
-        <div className="flex items-center gap-2 pointer-events-auto">
+        <div className="flex items-center gap-1.5 sm:gap-2 pointer-events-auto shrink-0">
           <button
             onClick={() => setContactOpen(true)}
-            className="hidden sm:inline-flex items-center justify-center min-h-[2.65rem] px-[1.15rem] border border-white/18 rounded-full bg-[#080808]/40 backdrop-blur-xl text-white/90 text-[0.74rem] font-semibold tracking-wider hover:border-white/45 hover:text-white active:scale-95 transition-all cursor-pointer shadow-lg"
+            className="hidden md:inline-flex items-center justify-center min-h-[2.45rem] sm:min-h-[2.65rem] px-3.5 sm:px-[1.15rem] border border-white/18 rounded-full bg-[#080808]/60 backdrop-blur-xl text-white/90 text-[0.72rem] sm:text-[0.74rem] font-semibold tracking-wider hover:border-white/45 hover:text-white active:scale-95 transition-all cursor-pointer shadow-lg focus:outline-none focus-visible:ring-1 focus-visible:ring-white/40"
           >
             Contact
           </button>
@@ -376,10 +373,10 @@ export function ChristophStage() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
-            className="xl:hidden w-[2.65rem] h-[2.65rem] rounded-full border border-white/20 bg-[#080808]/50 backdrop-blur-xl flex flex-col items-center justify-center gap-1 cursor-pointer text-white active:scale-95 transition-transform"
+            className="w-[2.45rem] sm:w-[2.65rem] h-[2.45rem] sm:h-[2.65rem] rounded-full border border-white/20 bg-[#080808]/60 backdrop-blur-xl flex flex-col items-center justify-center gap-1 cursor-pointer text-white active:scale-95 transition-transform focus:outline-none focus-visible:ring-1 focus-visible:ring-white/40 xl:hidden"
           >
-            <span className={`w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-[3px]" : ""}`} />
-            <span className={`w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-[2.5px]" : ""}`} />
+            <span className={`w-3.5 sm:w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "rotate-45 translate-y-[3px]" : ""}`} />
+            <span className={`w-3.5 sm:w-4 h-[1.5px] bg-white transition-transform ${mobileMenuOpen ? "-rotate-45 -translate-y-[2.5px]" : ""}`} />
           </button>
         </div>
       </header>
